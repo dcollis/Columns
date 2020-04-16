@@ -6,6 +6,8 @@ Since I was bored and visiting the parents, and I needed to learn WPF, I decided
 
 It was a 2 day project and I discovered (as I suspected) that WPF was entirely inappropriate for making games and that attempting good MVVM was relatively futile given the game interaction. I decided to stop fighting it and just finished it off as best as I could without using best practices.
 
+Good news: it works & is stable. My dad played this for years, loving it & no longer pining for his A3000. His score was completely ridiculous and unbeatable, to the point where I thought my sister was hacking the scoreboard. I had to sit and watch him play one day for proof it was really him!
+
 ## Note:
 * Loads of things could be improved on this. I know. Its hacked together code learning how WPF worked, more than anything else.
 * Scorebaord/online scoreboard is trivially hackable.
