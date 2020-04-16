@@ -1,0 +1,225 @@
+﻿<Window x:Class="Columns.GameWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Columns" Height="480" Width="640"
+        xmlns:local="clr-namespace:Columns"
+        x:Name="theWindow" Icon="Columns.ico">
+    <Window.Resources>
+        <local:NotBoolConverter x:Key="notBoolConverter" />
+        <DataTemplate DataType="{x:Type local:ScoreboardEntry}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" TextAlignment="Center" Text="{Binding Name}" />
+                <TextBlock Grid.Column="1" TextAlignment="Center" Text="{Binding Score}" />
+            </Grid>
+        </DataTemplate>
+        
+        <ControlTemplate x:Key="ButtonGreen" TargetType="{x:Type Button}">
+            <Grid Width="Auto" Height="Auto">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.8*"/>
+                    <RowDefinition Height="0.1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="0.8*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                </Grid.ColumnDefinitions>
+                <Ellipse StrokeThickness="0" Grid.ColumnSpan="3" Grid.RowSpan="3">
+                    <Ellipse.Fill>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF000000" Offset="0"/>
+                            <GradientStop Color="#FFFFFFFF" Offset="0.472"/>
+                            <GradientStop Color="#FF000000" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Ellipse.Fill>
+                </Ellipse>
+                <Ellipse StrokeThickness="0" Grid.ColumnSpan="3" Grid.RowSpan="3" Margin="1,1,1,1">
+                    <Ellipse.Fill>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF000000" Offset="0.483"/>
+                            <GradientStop Color="#FFFFFFFF" Offset="1"/>
+                            <GradientStop Color="#FF797979" Offset="0.477"/>
+                            <GradientStop Color="#FFE0E0E0" Offset="0"/>
+                        </LinearGradientBrush>
+                    </Ellipse.Fill>
+                </Ellipse>
+                <Grid Grid.Column="1" Grid.ColumnSpan="1" Grid.Row="1" Grid.RowSpan="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.033*"/>
+                        <RowDefinition Height="0.131*"/>
+                        <RowDefinition Height="0.469*"/>
+                        <RowDefinition Height="0.186*"/>
+                        <RowDefinition Height="0.181*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.114*"/>
+                        <ColumnDefinition Width="0.772*"/>
+                        <ColumnDefinition Width="0.114*"/>
+                    </Grid.ColumnDefinitions>
+                    <Ellipse StrokeThickness="1" VerticalAlignment="Stretch" Grid.ColumnSpan="3" Grid.RowSpan="5" x:Name="ellipse">
+                        <Ellipse.Stroke>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF000000" Offset="0"/>
+                                <GradientStop Color="#FFFFFFFF" Offset="0.472"/>
+                                <GradientStop Color="#FF000000" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Ellipse.Stroke>
+                        <Ellipse.Fill>
+                            <RadialGradientBrush GradientOrigin="0.5,0.5">
+                                <RadialGradientBrush.RelativeTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="0.865" ScaleY="0.805"/>
+                                        <SkewTransform AngleX="0" AngleY="0" CenterX="0.5" CenterY="0.5"/>
+                                        <RotateTransform Angle="135.194" CenterX="0.5" CenterY="0.5"/>
+                                        <TranslateTransform X="0.006" Y="0.124"/>
+                                    </TransformGroup>
+                                </RadialGradientBrush.RelativeTransform>
+                                <GradientStop Color="#FF10A600" Offset="0.995"/>
+                                <GradientStop Color="#FFC6FFBB" Offset="0"/>
+                            </RadialGradientBrush>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                    <Ellipse Stroke="#FF000000" StrokeThickness="0" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Grid.Column="1" Grid.Row="1" x:Name="ellipse1" Grid.RowSpan="2" Opacity="0.8">
+                        <Ellipse.Fill>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#33FFFFFF" Offset="1"/>
+                                <GradientStop Color="#FFFFFFFF" Offset="0"/>
+                            </LinearGradientBrush>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="1" Grid.RowSpan="2" Grid.Row="2" Grid.Column="1"/>
+                </Grid>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="StrokeThickness" TargetName="ellipse" Value="4"/>
+                    <Setter Property="Margin" TargetName="ellipse1" Value="2,2,2,4"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Fill" TargetName="ellipse">
+                        <Setter.Value>
+                            <RadialGradientBrush GradientOrigin="0.5,0.5">
+                                <RadialGradientBrush.RelativeTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="0.865" ScaleY="0.805"/>
+                                        <SkewTransform AngleX="0" AngleY="0" CenterX="0.5" CenterY="0.5"/>
+                                        <RotateTransform Angle="135.194" CenterX="0.5" CenterY="0.5"/>
+                                        <TranslateTransform X="0.006" Y="0.124"/>
+                                    </TransformGroup>
+                                </RadialGradientBrush.RelativeTransform>
+                                <GradientStop Color="#FFF46B00" Offset="1"/>
+                                <GradientStop Color="#FFF46B00" Offset="0"/>
+                            </RadialGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Visibility" TargetName="ellipse1" Value="Hidden"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
+    
+    <DockPanel>
+        <Viewbox>
+            <Border BorderBrush="Black" Background="Black" BorderThickness="2" CornerRadius="10">
+                <Grid>
+                    <Canvas x:Name="GameoverPopup" Panel.ZIndex="99">
+                        <Border Canvas.Top="30" Canvas.Left="160" Background="White" CornerRadius="10"  Visibility="{Binding GameoverPopupVisibility}" BorderBrush="Black" BorderThickness="2 2 2 2" Margin="20,20,20,20">
+                            <StackPanel Width="320" Height="250" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <TextBlock FontSize="20" FontWeight="Bold" Text="Game Over" Margin="10" TextAlignment="Center" />
+                                <TextBlock FontSize="20" FontWeight="Bold" Visibility="{Binding HasHighScoreVisibility}" Text="You got a high score!" Margin="10" TextAlignment="Center" />
+                                <Grid Visibility="{Binding HasHighScoreVisibility}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" FontSize="12" FontWeight="Bold" Text="Enter your name:" Margin="10" TextAlignment="Center" />
+                                
+                                    <TextBox x:Name="nameTextBox" Grid.Column="1" MaxLength="20" Width="120" HorizontalAlignment="Center" Visibility="{Binding GameoverPopupVisibility}" Margin="10">
+                                        <TextBox.Text>
+                                          <Binding Path="NewName" ValidatesOnExceptions="True" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                                            <Binding.ValidationRules>
+                                              <ExceptionValidationRule />
+                                            </Binding.ValidationRules>
+                                          </Binding>
+                                        </TextBox.Text>
+                                        <TextBox.Style>
+                                            <Style TargetType="{x:Type TextBox}">
+                                                <Style.Triggers>
+                                                  <Trigger Property="Validation.HasError" Value="true">
+                                                    <Setter Property="ToolTip" Value="You can only use letters and numbers in your name"/>
+                                                  </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBox.Style>
+                                    </TextBox>
+                                
+                                </Grid>
+                                <Button IsEnabled="{Binding ElementName=nameTextBox, Path=(Validation.HasError), Converter={StaticResource notBoolConverter}}" Focusable="False" x:Name="okButton" Content="Ok" Margin="20">
+                                   
+                                    </Button>
+                            </StackPanel>
+                        </Border>
+                    </Canvas>
+                    
+                    <Canvas x:Name="OnlineScoresPopup" Panel.ZIndex="99">
+                        <Border Canvas.Top="30" Canvas.Left="160" Background="White" CornerRadius="10"  Visibility="{Binding OnlineScoresPopupVisibility}" BorderBrush="Black" BorderThickness="2 2 2 2" Margin="20,20,20,20">
+                            <StackPanel Width="320" Height="300" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <TextBlock FontSize="20" FontWeight="Bold" Text="Online Scores" Margin="10" TextAlignment="Center" />
+                                <ListBox HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Margin="10" ItemsSource="{Binding OnlineScoreboard}" BorderBrush="Transparent" BorderThickness="0" />
+                                    
+                                <Button Width="100" Focusable="False" x:Name="okScoresButton" Content="Close" Margin="0, 10, 0, 0" />
+                                <Button Width="100" Focusable="False" x:Name="submitScoresButton" Content="Submit Scores" Margin="0, 10, 0, 10" />
+                            </StackPanel>
+                        </Border>
+                    </Canvas>
+                    
+                    <Canvas x:Name="PausedPopup" Panel.ZIndex="99">
+                        <Border Canvas.Top="30" Canvas.Left="160" Background="White" CornerRadius="10"  Visibility="{Binding PausedPopupVisibility}" BorderBrush="Black" BorderThickness="2 2 2 2" Margin="20,20,20,20">
+                            <Grid Width="320" Height="300" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <TextBlock FontSize="20" FontWeight="Bold" Text="PAUSED" Margin="10" VerticalAlignment="Center" TextAlignment="Center" />
+                            </Grid>
+                        </Border>
+                    </Canvas>
+                
+                <StackPanel Margin="10 0 10 0" Orientation="Horizontal" Height="480" Width="640">
+                    <Border BorderBrush="Black" BorderThickness="2 0 2 0">
+                        <Canvas Focusable="False" x:Name="gameCanvas" Background="White" Height="480" Width="280" />
+                    </Border>
+                    <Border BorderBrush="Black" BorderThickness="2"  CornerRadius="10" Margin="20 10 10 10">
+                        <StackPanel x:Name="rightPanel" Height="470" Width="320" HorizontalAlignment="Center">
+                            <StackPanel Orientation="Horizontal">
+                                <Border Width="100" BorderBrush="White" Background="White" BorderThickness="2"  CornerRadius="10" Margin="20 0 10 10">
+                                    <StackPanel Height="{Binding ColumnHeight}" x:Name="nextColumnDisplay" />
+                                </Border>
+                                    <Button Template="{DynamicResource ButtonGreen}" FontSize="14" FontWeight="Bold" Width="140" Foreground="#FFFFFFFF" VerticalAlignment="Stretch" Height="80"  Focusable="False" x:Name="startButton" Content="Start Game" Margin="20 0 10 10"/>
+                                </StackPanel>
+                                
+                            <Border BorderBrush="White" Background="White" BorderThickness="2"  CornerRadius="10" Margin="20 0 0 0">
+                                <TextBlock TextAlignment="Center" Foreground="Black" FontSize="20" Text="{Binding GameManager.TotalScore}" Margin="20 0 10 0" />
+                            </Border>
+                            
+                            
+                            <Border BorderBrush="White" Background="White" BorderThickness="2"  CornerRadius="10" Margin="20 10 0 10">
+                                    <StackPanel>
+                                        <TextBlock FontSize="14" FontWeight="Bold" Text="High Scores" Margin="10 10 10 0" TextAlignment="Center" />
+                           
+                                        <ListBox HorizontalAlignment="Stretch" Height="165" HorizontalContentAlignment="Stretch" Margin="10" ItemsSource="{Binding Scoreboard}" BorderBrush="Transparent" BorderThickness="0" />
+                                        <Button HorizontalAlignment="Center" Template="{DynamicResource ButtonGreen}" FontSize="14" FontWeight="Bold" Width="160" Foreground="#FFFFFFFF" VerticalAlignment="Stretch" Height="40"  Focusable="False" x:Name="showOnlineScoresButton" Content="Online Scores" Margin="20 0 10 10"/>
+                               
+                                    </StackPanel>
+                                </Border>
+                            
+                        </StackPanel>
+                    </Border>
+                    
+                </StackPanel>
+                </Grid>
+            </Border>
+        </Viewbox>
+    </DockPanel>
+</Window>
