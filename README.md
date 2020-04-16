@@ -13,3 +13,5 @@ Good news: it works & is stable. My dad played this for years, loving it & no lo
 * Scorebaord/online scoreboard is trivially hackable.
 * The server side of the online scoreboard is offline now anyway.
 * Before upload I converted the project from a very old VS project to 2019, and lost some stuff along the way (like the installer).
+
+![screen1](images/screen1.jpg)
